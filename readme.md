@@ -1,165 +1,59 @@
-console.log("Tic-Tac-Toe"); //Test script page is linked to HTML page
+TIC-TAC-TOE
+
+A classic game played with colors!!!
+
+    by Nandy Rodrigo
 
 
-// identify all the elements (all the divs in game area) that match my "sector" class name.
 
-var allBoxes = document.querySelectorAll('.sector');
+1) Planning
 
-// identify the element (button) that matches my "resetButton" class name
+    Please refer to plan image ("5.png")
 
-var reset = document.querySelector('.resetButton');
+    I originally planned to have a very simple game of Tic-Tac-Toe with the following mock up
 
-// identify the element (span in my h4 tag) that matches my "resetButton" class name
-
-var startingPlayer = document.querySelector('.playerName');
-
-// identify the element (h2 tag) that matches my "gameWinner" class name
-
-var gameWinner = document.querySelector('.gameWinner');
-
-// make an array of all possible winning combinatios
-
-var winningCombos = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6],
-];
-
-// set initial condition for winner being false
-
-var winner = false;
-
-// function checking for winner
-
-var checkForWin = function(){
-    for (var i = 0; i < winningCombos.length; i++){
-
-//loop through all the winning combinations and if any 3 boxes have the same colour (red or blue), declare a winner by making "winner = true"
-
-        if (allBoxes[winningCombos[i][0]].className == 'redBox' &&
-            allBoxes[winningCombos[i][1]].className == 'redBox' &&
-            allBoxes[winningCombos[i][2]].className == 'redBox'){
-
-                //display gameWinner message on page if above conditions are met
-
-                gameWinner.textContent = "RED PLAYER...YOU ARE THE WINNER!!!";
-                console.log ('Red Player wins');
-                winner = true;
-        }
-        if (allBoxes[winningCombos[i][0]].className == 'blueBox' &&
-            allBoxes[winningCombos[i][1]].className == 'blueBox' &&
-            allBoxes[winningCombos[i][2]].className == 'blueBox'){
-
-                //display gameWinner message on page if above conditions are met
-
-                gameWinner.textContent = "BLUE PLAYER...YOU ARE THE WINNER!!!";
-                console.log ('Blue Player wins');
-                winner = true;
-        }
-    }
-}
+        Game Title 
+        Player prompt (who's turn it is)
+        Gameboard
+        Reset Button
+        Game Result (P1 Win, P2 Win or Draw)
+        Score Card
 
 
-var counter = 0;
+2) HTML
 
-// if all 9 boxes are selected and no win is obtaineded in the last move, the game must be a draw. the checkForWin function must run before before checkForDraw. will see this later
+    The HTML markup was very straight forward and was the first step in constucting the backbone of my website and game. Once the structure was set for my main elements, I began giving all the moving parts "classes" and "IDs". This was to allow me to later use JavaScript and CSS to make the page one interactive and colorful.  
 
-var checkForDraw = function(){
-    if (allBoxes[0].className !== 'sector' &&
-        allBoxes[1].className !== 'sector' &&
-        allBoxes[2].className !== 'sector' &&
-        allBoxes[3].className !== 'sector' &&
-        allBoxes[4].className !== 'sector' &&
-        allBoxes[5].className !== 'sector' &&
-        allBoxes[6].className !== 'sector' &&
-        allBoxes[7].className !== 'sector' &&
-        allBoxes[8].className !== 'sector'){
+3) CSS
 
-            console.log('its a draw')
-
-            // display gameWinner message for a draw on page if above conditions are met
-
-            gameWinner.textContent = "IT'S A DRAW FOLKS!!!";
-    }
-}        
-        
-// red player stating first has been hardcoded
-
-var turn = "red";
-
-// game displaying that red player will be the fist to begin
-
-startingPlayer.textContent = "RED Player";
-
-// function that dictates player change at the end of each turn
-
-var playerTurn = function(){
+    This is a feature of web development which i will definately need to research and practice more. 
     
-    // if a win is obtained, there is no need to continue changing players.
+    Being new to programming, I chose to use very basic structure in order for me to visually see what changes I was making as I further developed the project. Once I was happy with the basic set up, I began using Javascript to make the game playable. 
+
+4) Javascript
+
+    This was easily the area which I believe I struggled with the most when I got to the finer details like setting conditions for switching the player, having a draw result and not allowing any further moves once a winner had been decided. 
     
-    if (winner == true){
-        return
-    }
+    By using internet resources I tried to gain an understanding of how others had made similar games using the same technologies and found various methods of creating my own version. My first attempt was made without fine-tuning my logic in my approach and quickly I came to a roadblock where I was unable to progress. I essentially had a page full of winning combination conditions written out individually and the code was unnessesarily long. Due to the clutter, I could not visualise how to move forward and began liasing with fellow students and my course instructors to modify my approach. A lot of discussions were had and I began applying learned knowledge to simplify the logic.
 
-    // if statement to alert player not to click a sure which has already been selected
+5) Biggest Issues and What to do Differently
 
-    if (event.target.className !== "sector"){
-        alert('pick another square!');
-        return
-    }
+    My biggest issues were the following:
 
-    // if it is the red player's turn, change the className of the selected square to redBox which will make it appear red.
+        creating funtions for switching players
+        creating a check for the draw
+        not allowing any further moves once a winner had been decided
 
-    if (turn === "red") {
-        event.target.className = "redBox";
-        counter = counter + 1;
 
-        //change player to blue once reb player's move has been made
+    What  would do differently
 
-        turn = "blue";
-        startingPlayer.textContent = "BLUE Player";
+        Rather that rushing into development, I need to refine my approach to solving a problem. During the course of this project I understood that I had all the tools I required to complete this but wasn't thinking about how to use them. I feel with better planning, I will increase my attention to detail and be able to come up with solutions more readily.
 
-    // if it is the blue player's turn, change the className of the selected square to blueBox which will make it appear blue.  
+            Tools such as:
 
-    } else {
-        event.target.className = "blueBox";
-        counter = counter + 1;
-
-        //change player to red once a blue player's move has been made
-
-        turn = "red";
-        startingPlayer.textContent = "RED Player"
-    }
-    checkForWin();
-    if (winner == false){
-        checkForDraw();
-    }
-}
-
-// function to clear the gameboard
-var clearBoard = function(event){
-    winner = false;
-    for(var i = 0; i < allBoxes.length; i++){
-        if (allBoxes[i].className == 'redBox' ||
-            allBoxes[i].className == 'blueBox' || 
-            allBoxes[i].className == 'sector'){   
-            allBoxes[i].className = 'sector';
-            turn = "red" 
-            startingPlayer.textContent = "RED Player";
-            gameWinner.textContent = "";  
-        }
-    }
-}
-
-// reset gameboard button - when clicked will run the clearBoard function
-reset.addEventListener('click',clearBoard);
-
-// 
-for(var i = 0; i < allBoxes.length; i++){
-    allBoxes[i].addEventListener('click',playerTurn);
-}    
+            Elements
+            Console
+            Arrays
+            Loops
+            Functions (where condditions are located in the funtion)
+            Storing Variables
