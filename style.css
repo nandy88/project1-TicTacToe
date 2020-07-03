@@ -1,0 +1,82 @@
+*{
+    font-family: 'Bungee Outline';
+}
+
+body{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    background-color: rgb(255, 250, 254);
+}
+
+h1{
+    color: rgb(0, 213, 241);
+    justify-content: center;
+    text-align: center;
+    font-size: 50px;
+}
+
+h4{
+    color: rgb(0, 213, 241);
+    text-align: center;
+    font-size: 30px;
+}
+
+h2{
+    color: rgb(0, 213, 241);
+    padding: 10px;
+    font-size: 40px;
+}
+
+footer{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.resetButton{
+    margin: auto 309px;
+    background-color: rgb(180, 0, 0);
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.game-area{
+    width: 309px;
+    margin: 50px auto;
+    display: grid;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.sector{
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
+
+.redBox{
+    background-color: red;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
+
+.redText{
+    color: red;
+
+}
+
+.blueBox{
+    background-color: blue;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
+
+.blueText{
+    color: blue;
+}
