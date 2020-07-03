@@ -23,13 +23,15 @@ h4{
 }
 
 h2{
+    display: grid;
+    justify-content: center;
     color: rgb(0, 213, 241);
-    padding: 10px;
     font-size: 40px;
 }
 
 footer{
     display: grid;
+    grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
 }
